@@ -1,0 +1,6 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cucumber.glue": ["src/test/java/com/orangehrm/**/*.java"],
+    "cucumber.features": ["src/test/resources/features/**/*.feature"],
+    "cucumber.require": ["src/test/java/com/orangehrm/**/*.java"]
+}
