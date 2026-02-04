@@ -3,34 +3,26 @@ version: 2.1
 jobs:
   build-playwright:
     docker:
-      - image: cimg/openjdk:17.0  # Java 17 + Maven preinstalled
+      - image: cimg/openjdk:17.0-node  # Java + Node 20 preinstalled
 
     steps:
       - checkout
 
-      # Verify Java & Maven
       - run:
-          name: Check Java and Maven
+          name: Check Java, Maven & Node
           command: |
             java -version
             mvn -version
-
-      # Install Node.js (required for Playwright)
-      - run:
-          name: Install Node.js
-          command: |
-            curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-            apt-get install -y nodejs
             node -v
             npm -v
 
-      # Install Playwright browsers
       - run:
           name: Install Playwright Browsers
           command: |
-            mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install"
+            mvn exec:java \
+              -Dexec.mainClass=com.microsoft.playwright.CLI \
+              -Dexec.args="install"
 
-      # Build project WITHOUT running tests
       - run:
           name: Build project (skip tests)
           command: mvn clean package -DskipTests
