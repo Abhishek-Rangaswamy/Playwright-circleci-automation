@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-playwright:
     docker:
-      - image: cimg/openjdk:17.0-node  # Java + Node 20 preinstalled
+      - image: cimg/openjdk:21.0-node  # Java + Node 20 preinstalled
 
     steps:
       - checkout
