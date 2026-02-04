@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  build-playwright:
+    docker:
+      - image: cimg/openjdk:21.0-node  # Java + Node 20 preinstalled
+
+    steps:
+      - checkout
+
+      - run:
+          name: Check Java, Maven & Node
+          command: |
+            java -version
+            mvn -version
+            node -v
+            npm -v
+
+      - run:
+          name: Install Playwright Browsers
+          command: |
+            mvn exec:java \
+              -Dexec.mainClass=com.microsoft.playwright.CLI \
+              -Dexec.args="install"
+
+      - run:
+          name: Build project (skip tests)
+          command: mvn clean package -DskipTests
+
+workflows:
+  build-only-workflow:
+    jobs:
+      - build-playwright
