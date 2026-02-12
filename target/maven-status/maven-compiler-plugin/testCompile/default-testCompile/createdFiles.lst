@@ -1,7 +1,0 @@
-com\orangehrm\base\PlaywrightManager.class
-com\orangehrm\runners\TestRunner.class
-com\orangehrm\utils\ConfigReader.class
-com\orangehrm\pageinitializer\PageInitializer.class
-com\orangehrm\stepdefinitions\LaunchOrangeHRMSteps.class
-com\orangehrm\base\BaseTest.class
-com\orangehrm\hooks\Hooks.class

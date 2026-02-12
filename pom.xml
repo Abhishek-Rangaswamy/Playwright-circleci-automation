@@ -11,13 +11,15 @@
 		<java.version>21</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Added encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!--
+		Added encoding -->
 
 		<!-- Versions -->
 		<playwright.version>1.42.0</playwright.version>
 		<cucumber.version>7.15.0</cucumber.version>
 		<testng.version>7.9.0</testng.version>
 		<slf4j.version>2.0.12</slf4j.version>
+		<extent.version>5.1.1</extent.version>
 	</properties>
 
 	<!-- 🔹 Dependencies -->
@@ -73,11 +75,15 @@
 		</dependency>
 
 		<!-- ▶ Extent Reports (Optional but recommended) -->
+		<!-- Removed duplicate literal-version dependency; kept single declaration below using ${extent.version} -->
+
+		<!-- ▶ Extent Reports Core -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>5.1.1</version>
+			<version>${extent.version}</version>
 		</dependency>
+
 
 	</dependencies>
 
