@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  test_type:
+    type: string
+    default: "smoke"
+
 jobs:
   build-playwright:
     docker:
@@ -28,6 +33,12 @@ jobs:
           command: mvn clean package -DskipTests
 
 workflows:
-  build-only-workflow:
+  aws-workflow:
+    when:
+      equal: ["aws", << pipeline.parameters.test_type >>]
     jobs:
-      - build-playwright
+      - create-cluster
+      
+  # build-only-workflow:
+   # jobs:
+   #   - build-playwright
